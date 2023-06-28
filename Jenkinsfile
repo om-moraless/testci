@@ -4,13 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script {
-                  zip zipFile: 'sample_app.zip',
-                  archive: false,
-                  dir: '',
-                  exclude: 'build/'
-                  archiveArtifacts 'sample_app.zip'
-                }
+              echo 'Build..'
             }
         }
         stage('Test') {
@@ -21,6 +15,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                 script {
+                  zip zipFile: 'testci_app.zip',
+                  archive: false,
+                  dir: 'app',
+                  exclude: 'app/build/'
+                  archiveArtifacts 'testci_app.zip'
+                }
             }
         }
     }
