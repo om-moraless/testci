@@ -19,7 +19,8 @@ pipeline {
                   zip zipFile: 'testci_app.zip',
                   archive: false,
                   dir: 'app',
-                  exclude: '**/build/*'
+                  exclude: '**/build/*',
+                  overwrite: true
                   archiveArtifacts 'testci_app.zip'
                 }
             }
